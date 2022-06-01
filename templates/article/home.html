@@ -1,0 +1,28 @@
+<a href="/">Home</a>
+<a href="/contacts">Contacts</a>
+
+{% if request.user.is_superuser %}
+<a href="/admin">Admin</a>
+{% endif %}
+
+{% if request.user.is_authenticated %}
+    <p>Welcome, {{ user }}!</p>
+    <a href="/logout">Logout</a>
+{% else %}
+    <a href="/login">Login</a>
+
+{% endif %}
+    
+
+    
+
+{% for post in posts %}
+<p style="color:blue">{{ post.name }} <br> {{ post.text }}</p>
+
+{% if post.image %}
+    <img src="{{ post.image }}" alt="{{ post.name }}">
+{% endif %}
+
+{% endfor %}
+    
+
